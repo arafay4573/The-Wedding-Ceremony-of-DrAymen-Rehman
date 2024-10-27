@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Dr. Aymen Rehman</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #f2f0ff, #f8d1d1);
+            position: relative;
+        }
+        .flower-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('https://example.com/flower-background.png'); /* Replace with your floral background image */
+            background-size: cover;
+            animation: flowerAnimation 10s infinite alternate;
+        }
+        @keyframes flowerAnimation {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .title {
+            font-size: 2.5em;
+            color: #7D3C98; /* Purple */
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #FF6347; /* Tomato */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            animation: fadeIn 2s;
+        }
+        .button:hover {
+            background-color: #FF4500; /* Orange Red */
+        }
+        .countdown {
+            font-size: 1.5em;
+            margin-top: 20px;
+            animation: fadeIn 2.5s;
+            color: #6A5ACD; /* Slate Blue */
+        }
+        .invitation {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: slideIn 1s ease-in-out;
+            position: relative;
+        }
+        h2, h3, p {
+            color: #333;
+            margin: 5px 0;
+        }
+        .map-link {
+            color: #007bff;
+            text-decoration: underline;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .bride-animation {
+            width: 100px; /* Adjust the size as needed */
+            height: 200px; /* Adjust the size as needed */
+            background-image: url('https://example.com/bride-animation.png'); /* Replace with your animation image */
+            background-size: cover;
+            animation: fadeIn 2s;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="flower-bg"></div>
+    <div class="main-container">
+        <div class="title">The Wedding of Dr. Aymen Rehman</div>
+        <button class="button" onclick="openInvitation()">Open Invitation</button>
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <div class="invitation" id="invitationDetails">
+        <div class="bride-animation"></div>
+        <h2><strong>Mr. & Mrs. Kifayat Ur Rehman</strong></h2>
+        <p><strong>Request the honor of your presence & blessings on the occasion of the Wedding Ceremony of their beloved daughter</strong></p>
+        <h3 style="font-size: 2em; animation: fadeIn 3s;"><strong>Dr. Aymen Rehman</strong></h3>
+        <p><em>"And among His signs is that He created for you mates..." (Quran 30:21)</em></p>
+        <h3>Programme inshallah on 29th November 2024</h3>
+        <p>Arrival of Barat: 12:00 PM</p>
+        <p>Namaz e Jumma: 1:00 PM</p>
+        <p>Lunch: 2:15 PM (sharp)</p>
+        <div class="countdown" id="countdownDetails"></div>
+        <h3>Looking Forward</h3>
+        <p>Maj Anees Ur Rehman - 03335754057</p>
+        <p>Engr. Muhammad Abdur Rafay - 03330147310</p>
+        <h3>Venue</h3>
+        <p>ROYAL MARQUEE<br>Block A, Faisal Hills, G.T Road, Margalla Hills</p>
+        <p><a class="map-link" href="https://maps.app.goo.gl/oENwMskokkVQvh7F9" target="_blank">View Location on Google Maps</a></p>
+    </div>
+
+    <script>
+        // Countdown timer logic
+        const weddingDate = new Date('November 29, 2024 12:00:00 GMT+0500').getTime();
+        const countdownElement = document.getElementById("countdown");
+        const countdownDetailsElement = document.getElementById("countdownDetails");
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            countdownDetailsElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                countdownElement.innerHTML = "The wedding has started!";
+                countdownDetailsElement.innerHTML = "The wedding has started!";
+            }
+        }
+
+        // Open invitation function
+        function openInvitation() {
+            document.getElementById("invitationDetails").style.display = "block"; // Show invitation details
+            document.querySelector(".main-container").style.display = "none"; // Hide main container after opening the invitation
+        }
+
+        // Update countdown every second
+        const timer = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
