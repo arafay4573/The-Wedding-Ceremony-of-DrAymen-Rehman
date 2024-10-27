@@ -329,28 +329,14 @@
     </div>
 
     <div class="music-control" onclick="toggleMusic()">♪</div>
-<audio id="bgMusic" loop controls>
+<audio id="bgMusic" loop >
     <source src="./wedding-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
 </audio>
 
 
 
     <script>
         // Music control
-        let isPlaying = false;
-        const audio = document.getElementById('bgMusic');
-
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                document.querySelector('.music-control').innerHTML = '♪';
-            } else {
-                audio.play();
-                document.querySelector('.music-control').innerHTML = '⏸';
-            }
-            isPlaying = !isPlaying;
-        }
 
         // Open invitation function
         function openInvitation() {
@@ -358,10 +344,6 @@
             document.querySelector(".main-container").style.display = "none";
             createParticles();
             createHearts();
-            // Start playing music when invitation opens
-            if (!isPlaying) {
-                toggleMusic();
-            }
         }
 
         // Create floating particles
