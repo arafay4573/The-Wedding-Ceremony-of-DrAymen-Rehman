@@ -24,7 +24,7 @@
             min-height: 100vh;
         }
 
-        .particles {
+        .particles, .hearts {
             position: fixed;
             top: 0;
             left: 0;
@@ -34,30 +34,9 @@
             pointer-events: none;
         }
 
-        .particle {
+        .particle, .heart {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B' opacity='0.6'%3E%3Cpath d='M12,1L8,5H16L12,1M12,23L8,19H16L12,23M12,12A1,1 0 0,0 11,13A1,1 0 0,0 12,14A1,1 0 0,0 13,13A1,1 0 0,0 12,12Z'/%3E%3C/svg%3E") no-repeat center/contain;
             pointer-events: none;
-            animation: float 20s linear infinite;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
         }
 
         .main-container {
@@ -77,18 +56,6 @@
             color: var(--primary-color);
             margin-bottom: 30px;
             animation: titleAnimation 2s ease-out;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        @keyframes titleAnimation {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
         }
 
         .button {
@@ -99,40 +66,12 @@
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-        }
-
-        .button::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: transform 0.5s;
-        }
-
-        .button:active::after {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 0;
         }
 
         .countdown {
             font-size: 1.8em;
             margin-top: 30px;
             color: var(--accent-color);
-            animation: fadeIn 2s;
             font-weight: 700;
         }
 
@@ -141,54 +80,12 @@
             background: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: slideIn 1.5s ease-out;
             max-width: 800px;
             margin: 20px auto;
-            position: relative;
-            overflow: hidden;
         }
 
-        .invitation::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50,10 Q60,0 70,10 T90,10 T110,10' style='fill:none;stroke:%23FFD7E5;stroke-width:2'/%3E%3C/svg%3E") repeat;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .invitation h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.5em;
+        .invitation h2, .invitation h3 {
             color: var(--primary-color);
-            margin: 20px 0;
-            animation: fadeIn 2s;
-        }
-
-        .invitation h3 {
-            color: var(--accent-color);
-            margin: 15px 0;
-            font-size: 1.5em;
-        }
-
-        .invitation p {
-            line-height: 1.6;
-            margin: 10px 0;
-            font-size: 1.1em;
-        }
-
-        .quran-verse {
-            font-style: italic;
-            color: var(--primary-color);
-            padding: 20px;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            margin: 20px 0;
-            animation: fadeIn 3s;
         }
 
         .venue-details {
@@ -198,95 +95,49 @@
             margin: 20px 0;
         }
 
-        .map-link {
-            display: inline-block;
-            color: white;
-            background: var(--secondary-color);
+        .groomsmen-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .groom-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #ffffff;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
             padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            margin-top: 10px;
+            margin: 10px;
+            animation: groomCardAnimation 4s infinite;
+        }
+
+        .groom-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
             transition: transform 0.3s;
         }
 
-        .map-link:hover {
-            transform: translateY(-2px);
+        .groom-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
         }
 
-        .hearts {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+        .groom-title {
+            font-size: 0.9em;
+            color: #777;
         }
 
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FF6B6B'%3E%3Cpath d='M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z'/%3E%3C/svg%3E") no-repeat center/contain;
-            opacity: 0;
-        }
-
-        @keyframes heartFloat {
-            0% {
-                transform: translateY(100vh) scale(0);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100vh) scale(1);
-                opacity: 0;
-            }
-        }
-
-        .music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--secondary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5em;
-            }
-            .invitation {
-                padding: 20px;
-                margin: 10px;
-            }
-            .invitation h2 {
-                font-size: 2em;
-            }
+        @keyframes groomCardAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
         }
     </style>
 </head>
@@ -302,43 +153,43 @@
 
     <div class="invitation" id="invitationDetails">
         <h2>Mr. & Mrs. Kifayat Ur Rehman</h2>
-        <p><strong>Request the honor of your presence & blessings on the occasion of the Wedding Ceremony of their beloved daughter</strong></p>
-        
+        <p>Request the honor of your presence & blessings on the occasion of the Wedding Ceremony of their beloved daughter</p>
         <h2>Dr. Aymen Rehman</h2>
-        
-        <div class="quran-verse">
-            <p><em>"And among His signs is that He created for you mates..." (Quran 30:21)</em></p>
-        </div>
 
-        <h3>Programme inshallah on 29th November 2024</h3>
-        <p>Arrival of Barat: 12:00 PM</p>
-        <p>Namaz e Jumma: 1:00 PM</p>
-        <p>Lunch: 2:15 PM (sharp)</p>
-        
-        <div class="countdown" id="countdownDetails"></div>
+        <h3>Programme</h3>
+        <p>29th November 2024</p>
+        <p>Arrival of Barat: 12:00 PM | Namaz e Jumma: 1:00 PM | Lunch: 2:15 PM</p>
 
         <div class="venue-details">
             <h3>Looking Forward</h3>
             <p>Maj Anees Ur Rehman - 03335754057</p>
             <p>Engr. Muhammad Abdur Rafay - 03330147310</p>
-            
+
             <h3>Venue</h3>
-            <p>ROYAL MARQUEE<br>Block A, Faisal Hills, G.T Road, Margalla Hills</p>
-            <a class="map-link" href="https://maps.app.goo.gl/oENwMskokkVQvh7F9" target="_blank">View Location on Google Maps</a>
+            <p>ROYAL MARQUEE, Faisal Hills</p>
+        </div>
+
+        <!-- Groomsmen Animation Section -->
+        <div class="groomsmen-section">
+            <div class="groom-card">
+                <img src="https://via.placeholder.com/80" alt="Groomsman" class="groom-image">
+                <div class="groom-name">Groomsman 1</div>
+                <div class="groom-title">Brother of the Groom</div>
+            </div>
+            <div class="groom-card">
+                <img src="https://via.placeholder.com/80" alt="Groomsman" class="groom-image">
+                <div class="groom-name">Groomsman 2</div>
+                <div class="groom-title">Friend of the Groom</div>
+            </div>
+            <div class="groom-card">
+                <img src="https://via.placeholder.com/80" alt="Groomsman" class="groom-image">
+                <div class="groom-name">Groomsman 3</div>
+                <div class="groom-title">Cousin</div>
+            </div>
         </div>
     </div>
 
-    <div class="music-control" onclick="toggleMusic()">♪</div>
-<audio id="bgMusic" loop >
-    <source src="./wedding-music.mp3" type="audio/mpeg">
-</audio>
-
-
-
     <script>
-        // Music control
-
-        // Open invitation function
         function openInvitation() {
             document.getElementById("invitationDetails").style.display = "block";
             document.querySelector(".main-container").style.display = "none";
@@ -346,19 +197,17 @@
             createHearts();
         }
 
-        // Create floating particles
         function createParticles() {
             const particlesContainer = document.querySelector('.particles');
             for (let i = 0; i < 50; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animation = 'float 20s linear infinite';
                 particlesContainer.appendChild(particle);
             }
         }
 
-        // Create floating hearts
         function createHearts() {
             const heartsContainer = document.querySelector('.hearts');
             for (let i = 0; i < 30; i++) {
@@ -366,55 +215,32 @@
                 heart.className = 'heart';
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animation = `heartFloat ${15 + Math.random() * 10}s linear infinite`;
-                heart.style.animationDelay = Math.random() * 10 + 's';
                 heartsContainer.appendChild(heart);
             }
         }
 
-        // Countdown timer logic
         const weddingDate = new Date('November 29, 2024 12:00:00 GMT+0500').getTime();
         const countdownElement = document.getElementById("countdown");
-        const countdownDetailsElement = document.getElementById("countdownDetails");
 
         function updateCountdown() {
             const now = new Date().getTime();
             const distance = weddingDate - now;
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            const countdownText = `
-                <div style="display: flex; justify-content: center; gap: 20px;">
-                    <div>${days}<br><small style="font-size: 0.5em;">Days</small></div>
-                    <div>${hours}<br><small style="font-size: 0.5em;">Hours</small></div>
-                    <div>${minutes}<br><small style="font-size: 0.5em;">Minutes</small></div>
-                    <div>${seconds}<br><small style="font-size: 0.5em;">Seconds</small></div>
-                </div>
-            `;
-
-            countdownElement.innerHTML = countdownText;
-            countdownDetailsElement.innerHTML = countdownText;
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
             if (distance < 0) {
                 clearInterval(timer);
                 countdownElement.innerHTML = "The wedding has started!";
-                countdownDetailsElement.innerHTML = "The wedding has started!";
             }
         }
 
-        // Initial countdown update
         updateCountdown();
-        // Update countdown every second
         const timer = setInterval(updateCountdown, 1000);
-
-        // Handle audio loading error
-        audio.addEventListener('error', function() {
-            console.log('Error loading audio file');
-            document.querySelector('.music-control').style.display = 'none';
-        });
     </script>
 </body>
 </html>
-            
+   
